@@ -1,3 +1,4 @@
+import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Button } from "../../components/Button";
 
@@ -14,6 +15,7 @@ function Home(): JSX.Element {
       <Wrapper>
         <Button title="Acessar Blog" />
       </Wrapper>
+      <StatusBar style="light" />
     </Container>
   );
 }
