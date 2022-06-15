@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { FaSearch } from "react-icons/fa";
 import {
   Container,
   PostsList,
@@ -7,6 +8,9 @@ import {
   Body,
   Title,
   Wrapper,
+  Input,
+  InputContainer,
+  IconContainer,
 } from "./style";
 
 export interface IBlogProps {
@@ -18,11 +22,15 @@ export interface IBlogProps {
 
 function Feed(): JSX.Element {
   const [posts, setPosts] = useState<any>([]);
+  const [originalData, setOriginalData] = useState<any>([]);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
-      .then((json) => setPosts(json));
+      .then((json) => {
+        setOriginalData(json);
+        setPosts(json);
+      });
   }, []);
 
   function renderPost(item: any) {
@@ -36,8 +44,21 @@ function Feed(): JSX.Element {
     );
   }
 
+  function Search(s: any) {
+    let arr = JSON.parse(JSON.stringify(originalData));
+    setPosts(arr.filter((d: any) => d.title.includes(s)));
+  }
+
   return (
     <Container>
+      <InputContainer>
+        <Input
+          placeholder={`pesquise aqui ...`}
+          onChangeText={(s) => Search(s)}
+          autoCapitalize="none"
+        />
+        <IconContainer></IconContainer>
+      </InputContainer>
       <PostsList
         data={posts}
         keyExtractor={(item: any) => String(item.id)}

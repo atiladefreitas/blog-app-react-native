@@ -2,7 +2,7 @@ import { Container, TextInput, Icon } from "./style";
 import { FaSearch } from "react-icons/fa";
 import React, { useState } from "react";
 
-function Search(): JSX.Element {
+function SearchBar(): JSX.Element {
   const [inputValue, setInputValue] = useState("");
   return (
     <Container>
@@ -11,4 +11,4 @@ function Search(): JSX.Element {
   );
 }
 
-export { Search };
+export { SearchBar };

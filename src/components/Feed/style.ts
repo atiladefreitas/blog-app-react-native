@@ -38,3 +38,22 @@ export const Wrapper = styled.View`
   align-items: center;
   justify-content: space-evenly;
 `;
+
+export const Input = styled.TextInput`
+  width: 80%;
+  height: 100%;
+`;
+
+export const InputContainer = styled.View`
+  width: 95%;
+  height: 50px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding-left: 15px;
+  font-size: 16px;
+  flex-direction: row;
+`;
+export const IconContainer = styled.View`
+  width: 20%;
+  height: 100%;
+`;
