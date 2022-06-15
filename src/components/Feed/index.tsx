@@ -1,7 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { BlogCard } from "../BlogCard";
-import { Container } from "./style";
+import {
+  Container,
+  PostsList,
+  PostCardContainer,
+  Body,
+  Title,
+  Wrapper,
+} from "./style";
 
 export interface IBlogProps {
   title: string;
@@ -13,21 +19,30 @@ export interface IBlogProps {
 function Feed(): JSX.Element {
   const [posts, setPosts] = useState<any>([]);
 
-  async function getPosts(): Promise<void> {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts/1"
-    );
-    setPosts(response.data);
-    return response.data;
-  }
-
   useEffect(() => {
-    getPosts();
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((json) => setPosts(json));
   }, []);
+
+  function renderPost(item: any) {
+    return (
+      <PostCardContainer>
+        <Wrapper>
+          <Title>{item.title}</Title>
+          <Body>{item.body}</Body>
+        </Wrapper>
+      </PostCardContainer>
+    );
+  }
 
   return (
     <Container>
-      <BlogCard title={posts.title} content={posts.body} />
+      <PostsList
+        data={posts}
+        keyExtractor={(item: any) => String(item.id)}
+        renderItem={({ item }: any) => renderPost(item)}
+      />
     </Container>
   );
 }

@@ -6,21 +6,35 @@ export const Container = styled.View`
   width: 100%;
   height: 90%;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.1);
 `;
 
-export const ItemContainer = styled.View`
-  background-color: #eeeeee;
-  border-radius: 10px;
-  padding: 20px;
-  margin-vertical: 8px;
-  margin-horizontal: 16px;
+export const PostsList = styled(FlatList as new () => FlatList<IBlogProps>)`
+  width: 95%;
 `;
 
-export const ItemName = styled.Text`
-  font-size: 24px;
+export const PostCardContainer = styled.View`
+  height: 160px;
 `;
 
-export const UsersList = styled(FlatList as new () => FlatList<IBlogProps>)`
-  padding: 20px;
+export const Title = styled.Text`
+  font-weight: 700;
+  color: white;
+  font-size: 19px;
+  width: 95%;
+`;
+
+export const Body = styled.Text`
+  font-weight: 400;
+  font-size: 14px;
+  color: white;
+  width: 95%;
+`;
+
+export const Wrapper = styled.View`
+  background-color: #5c7b9c;
+  width: 100%;
+  border-radius: 8px;
+  height: 150px;
+  align-items: center;
+  justify-content: space-evenly;
 `;

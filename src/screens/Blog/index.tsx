@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Header, Logo, Wrapper } from "./style";
 import { StatusBar } from "expo-status-bar";
 import logo from "../../assets/Logo.png";
-import { BlogCard } from "../../components/BlogCard";
 import { Search } from "../../components/Search";
 
 import { Feed } from "../../components/Feed";
