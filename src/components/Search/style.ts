@@ -12,10 +12,6 @@ export const Container = styled.View`
 export const TextInput = styled.TextInput`
   width: 100%;
   height: 100%;
-
-  &:focus {
-    outline: none;
-  }
 `;
 
 export const Icon = styled.View`
