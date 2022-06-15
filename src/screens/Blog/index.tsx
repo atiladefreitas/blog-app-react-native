@@ -4,6 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import logo from "../../assets/Logo.png";
 import { BlogCard } from "../../components/BlogCard";
 import { Search } from "../../components/Search";
+
 import { Feed } from "../../components/Feed";
 
 function Blog(): JSX.Element {
@@ -22,6 +23,3 @@ function Blog(): JSX.Element {
 }
 
 export { Blog };
-
-{
-}
