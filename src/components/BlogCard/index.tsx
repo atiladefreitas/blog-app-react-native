@@ -1,4 +1,4 @@
-import { Container, Text, CardContainer, Wrapper, Title } from "./style";
+import { Container, Text, Title } from "./style";
 
 interface IBlogCardProps {
   title: string;
@@ -8,12 +8,8 @@ interface IBlogCardProps {
 function BlogCard({ title, content }: IBlogCardProps): JSX.Element {
   return (
     <Container>
-      <Wrapper>
-        <CardContainer>
-          <Title>{title}</Title>
-          <Text>{content}</Text>
-        </CardContainer>
-      </Wrapper>
+      <Title>{title}</Title>
+      <Text>{content}</Text>
     </Container>
   );
 }
