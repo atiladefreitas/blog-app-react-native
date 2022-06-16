@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 
 export const Container = styled.View`
   width: 100%;
@@ -16,3 +17,11 @@ export const IconContainer = styled.View`
 `;
 
 export const Text = styled.Text``;
+
+export const Button = styled(TouchableOpacity)<TouchableOpacityProps>`
+  width: 10%;
+  height: 100%;
+
+  justify-content: center;
+  align-items: center;
+`;

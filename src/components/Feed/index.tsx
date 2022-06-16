@@ -16,17 +16,32 @@ import {
   ListContainer,
   ContentWrapper,
 } from "./style";
+import { api } from "../../services/api";
+import { Button } from "react-native";
 
 export interface IBlogProps {
-  title: string;
-  id?: string;
   body: string;
-  userId?: number;
+  title: string;
+  id: number;
+  postId: number;
+  onDelete(postId: number): void;
 }
 
 function Feed(): JSX.Element {
-  const [posts, setPosts] = useState<any>([]);
+  const [posts, setPosts] = useState<IBlogProps[]>([]);
   const [originalData, setOriginalData] = useState<any>([]);
+  const [postToDelete, setPostToDelete] = useState(0);
+
+  /*  function filterPosts(text: string) {
+    api.get(`posts/${!!text ? `?title=${text}` : ""}`).then(({ data }) => {
+      setPosts(data);
+    });
+  }
+
+  api.get("posts").then((response) => {
+    setPosts(response.data);
+    setOriginalData(response.data);
+  }); */
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
@@ -37,6 +52,34 @@ function Feed(): JSX.Element {
       });
   }, []);
 
+  /*  async function handleOnDelete() {
+    fetch("https://jsonplaceholder.typicode.com/posts/1", {
+      method: "DELETE",
+    });
+  } */
+
+  function handleDeletePost(): void {
+    api
+      .delete(`posts/${postToDelete}`)
+      .then(() => {
+        const remainingPosts = posts.filter((item) => item.id !== postToDelete);
+        setPosts(remainingPosts);
+        setPostToDelete(0);
+      })
+      .catch((err) => {});
+  }
+
+  function handleFavoritePost(): void {
+    api
+      .delete(`posts/${postToDelete}`)
+      .then(() => {
+        const remainingPosts = posts.filter((item) => item.id !== postToDelete);
+        setPosts(remainingPosts);
+        setPostToDelete(0);
+      })
+      .catch((err) => {});
+  }
+
   function renderPost(item: any) {
     return (
       <PostCardContainer>
@@ -45,7 +88,11 @@ function Feed(): JSX.Element {
             <Title>{item.title}</Title>
             <Body>{item.body}</Body>
           </ContentWrapper>
-          <CardFooter />
+          <CardFooter
+            onDelete={handleDeletePost}
+            onFavorite={handleFavoritePost}
+            postId={item.id}
+          />
         </Wrapper>
       </PostCardContainer>
     );
