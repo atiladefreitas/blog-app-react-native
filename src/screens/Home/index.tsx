@@ -4,7 +4,15 @@ import { Button } from "../../components/Button";
 
 import { Container, Title, SubTitle, BodyText, Wrapper } from "./style";
 
-function Home(): JSX.Element {
+/* interface IHomeProps {
+  navigation
+} */
+
+function Home({ navigation }: any): JSX.Element {
+  function onButtonPress() {
+    navigation.navigate("Blog");
+  }
+
   return (
     <Container>
       <Wrapper>
@@ -13,7 +21,7 @@ function Home(): JSX.Element {
         <BodyText>by: Átila de Freitas</BodyText>
       </Wrapper>
       <Wrapper>
-        <Button title="Acessar Blog" />
+        <Button title="Acessar Blog" onPress={onButtonPress} />
       </Wrapper>
       <StatusBar style="light" />
     </Container>

@@ -4,12 +4,14 @@ import { IBlogProps } from "./index";
 
 export const Container = styled.View`
   width: 100%;
-  height: 90%;
+  height: 100%;
+
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const PostsList = styled(FlatList as new () => FlatList<IBlogProps>)`
-  width: 95%;
+  width: 100%;
 `;
 
 export const PostCardContainer = styled.View`
@@ -41,7 +43,7 @@ export const Wrapper = styled.View`
 
 export const Input = styled.TextInput`
   width: 80%;
-  height: 100%;
+  height: 50px;
 `;
 
 export const InputContainer = styled.View`
@@ -52,6 +54,10 @@ export const InputContainer = styled.View`
   padding-left: 15px;
   font-size: 16px;
   flex-direction: row;
+`;
+export const ListContainer = styled.View`
+  width: 95%;
+  height: 90%;
 `;
 export const IconContainer = styled.View`
   width: 20%;

@@ -14,7 +14,6 @@ export const Header = styled.View`
 `;
 export const Wrapper = styled.View`
   width: 100%;
-  background-color: ;
   height: 85%;
   align-items: center;
   justify-content: space-between;

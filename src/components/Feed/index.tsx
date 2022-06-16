@@ -11,6 +11,7 @@ import {
   Input,
   InputContainer,
   IconContainer,
+  ListContainer,
 } from "./style";
 
 export interface IBlogProps {
@@ -59,11 +60,13 @@ function Feed(): JSX.Element {
         />
         <IconContainer></IconContainer>
       </InputContainer>
-      <PostsList
-        data={posts}
-        keyExtractor={(item: any) => String(item.id)}
-        renderItem={({ item }: any) => renderPost(item)}
-      />
+      <ListContainer>
+        <PostsList
+          data={posts}
+          keyExtractor={(item: any) => String(item.id)}
+          renderItem={({ item }: any) => renderPost(item)}
+        />
+      </ListContainer>
     </Container>
   );
 }
