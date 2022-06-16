@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaSearch } from "react-icons/fa";
+import { FontAwesome } from "@expo/vector-icons";
+
+import { CardFooter } from "../CardFooter";
 import {
   Container,
   PostsList,
@@ -12,6 +14,7 @@ import {
   InputContainer,
   IconContainer,
   ListContainer,
+  ContentWrapper,
 } from "./style";
 
 export interface IBlogProps {
@@ -38,8 +41,11 @@ function Feed(): JSX.Element {
     return (
       <PostCardContainer>
         <Wrapper>
-          <Title>{item.title}</Title>
-          <Body>{item.body}</Body>
+          <ContentWrapper>
+            <Title>{item.title}</Title>
+            <Body>{item.body}</Body>
+          </ContentWrapper>
+          <CardFooter />
         </Wrapper>
       </PostCardContainer>
     );
@@ -58,7 +64,9 @@ function Feed(): JSX.Element {
           onChangeText={(s) => Search(s)}
           autoCapitalize="none"
         />
-        <IconContainer></IconContainer>
+        <IconContainer>
+          <FontAwesome name="search" size={24} color="rgba(0,0,0,0.6)" />
+        </IconContainer>
       </InputContainer>
       <ListContainer>
         <PostsList

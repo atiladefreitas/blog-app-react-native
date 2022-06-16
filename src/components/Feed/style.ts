@@ -15,7 +15,7 @@ export const PostsList = styled(FlatList as new () => FlatList<IBlogProps>)`
 `;
 
 export const PostCardContainer = styled.View`
-  height: 160px;
+  height: 210px;
 `;
 
 export const Title = styled.Text`
@@ -35,8 +35,16 @@ export const Body = styled.Text`
 export const Wrapper = styled.View`
   background-color: #5c7b9c;
   width: 100%;
+  height: 200px;
   border-radius: 8px;
-  height: 150px;
+
+  align-items: center;
+`;
+export const ContentWrapper = styled.View`
+  width: 100%;
+  height: 80%;
+
+  border-radius: 8px;
   align-items: center;
   justify-content: space-evenly;
 `;
@@ -62,4 +70,6 @@ export const ListContainer = styled.View`
 export const IconContainer = styled.View`
   width: 20%;
   height: 100%;
+  align-items: center;
+  justify-content: center;
 `;
