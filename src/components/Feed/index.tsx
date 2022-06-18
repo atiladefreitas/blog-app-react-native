@@ -16,15 +16,14 @@ import {
   ListContainer,
   ContentWrapper,
 } from "./style";
-import { api } from "../../services/api";
-import { Button } from "react-native";
+import { apiURL } from "../../services/api";
 
 export interface IBlogProps {
   body: string;
   title: string;
   id: number;
   postId: number;
-  onDelete(postId: number): void;
+  onDelete(item: number): void;
 }
 
 function Feed(): JSX.Element {
@@ -32,55 +31,45 @@ function Feed(): JSX.Element {
   const [originalData, setOriginalData] = useState<any>([]);
   const [postToDelete, setPostToDelete] = useState(0);
 
-  /*  function filterPosts(text: string) {
-    api.get(`posts/${!!text ? `?title=${text}` : ""}`).then(({ data }) => {
-      setPosts(data);
-    });
-  }
-
-  api.get("posts").then((response) => {
-    setPosts(response.data);
-    setOriginalData(response.data);
-  }); */
-
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((json) => {
-        setOriginalData(json);
-        setPosts(json);
-      });
+    const fetchPosts = () => {
+      fetch(`${apiURL}/posts`)
+        .then((response) => response.json())
+        .then((json) => {
+          setOriginalData(json);
+          setPosts(json);
+        });
+    };
+    fetchPosts();
   }, []);
 
-  /*  async function handleOnDelete() {
-    fetch("https://jsonplaceholder.typicode.com/posts/1", {
-      method: "DELETE",
-    });
-  } */
-
-  function handleDeletePost(): void {
-    api
-      .delete(`posts/${postToDelete}`)
-      .then(() => {
-        const remainingPosts = posts.filter((item) => item.id !== postToDelete);
-        setPosts(remainingPosts);
-        setPostToDelete(0);
-      })
-      .catch((err) => {});
-  }
-
-  function handleFavoritePost(): void {
-    api
-      .delete(`posts/${postToDelete}`)
-      .then(() => {
-        const remainingPosts = posts.filter((item) => item.id !== postToDelete);
-        setPosts(remainingPosts);
-        setPostToDelete(0);
-      })
-      .catch((err) => {});
-  }
-
   function renderPost(item: any) {
+    //
+    const handleDeletePost = async (id: any) => {
+      await fetch(`${apiURL}/posts/${id}`, {
+        method: "DELETE",
+      })
+        .then((response) => {
+          if (response.status !== 200) {
+            return;
+          } else {
+            setPosts(
+              posts.filter((post) => {
+                return post.id !== id;
+              })
+            );
+          }
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+      console.log(`> Deleted! \n ID: ${item.id} \n Title: ${item.title}`);
+    };
+
+    const handleFavoritePost = () => {
+      console.log(`> Favorited! \n ID: ${item.id} \n Title: ${item.title}`);
+    };
+
     return (
       <PostCardContainer>
         <Wrapper>
@@ -91,6 +80,7 @@ function Feed(): JSX.Element {
           <CardFooter
             onDelete={handleDeletePost}
             onFavorite={handleFavoritePost}
+            item={item.id}
             postId={item.id}
           />
         </Wrapper>
@@ -117,7 +107,9 @@ function Feed(): JSX.Element {
       </InputContainer>
       <ListContainer>
         <PostsList
+          //@ts-ignore
           data={posts}
+          //@ts-ignore
           keyExtractor={(item: any) => String(item.id)}
           renderItem={({ item }: any) => renderPost(item)}
         />

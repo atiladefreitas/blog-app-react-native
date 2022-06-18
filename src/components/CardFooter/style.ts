@@ -7,19 +7,28 @@ export const Container = styled.View`
   background-color: rgba(255, 255, 255, 0.5);
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
-  flex-direction: row-reverse;
-`;
-export const IconContainer = styled.View`
-  width: 10%;
-  height: 100%;
   align-items: center;
   justify-content: center;
 `;
+export const IconContainer = styled.View`
+  flex-direction: row;
+  width: 26%;
+  height: 100%;
+`;
 
-export const Text = styled.Text``;
+export const Text = styled.Text`
+  color: rgba(255, 255, 255, 0.7);
+`;
+
+export const Wrapper = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 95%;
+`;
 
 export const Button = styled(TouchableOpacity)<TouchableOpacityProps>`
-  width: 10%;
+  width: 50%;
   height: 100%;
 
   justify-content: center;
