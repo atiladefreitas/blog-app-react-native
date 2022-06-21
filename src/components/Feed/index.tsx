@@ -29,20 +29,34 @@ export interface IBlogProps {
 function Feed(): JSX.Element {
   const [posts, setPosts] = useState<IBlogProps[]>([]);
   const [originalData, setOriginalData] = useState<any>([]);
-  const [favoritePost, setFavoritePost] = useState<any>([]);
   const [postToDelete, setPostToDelete] = useState(0);
+
+  const changeFavorite = (value: boolean, item: any) => {
+    item.favorite = value;
+  };
 
   useEffect(() => {
     const fetchPosts = () => {
       fetch(`${apiURL}/posts`)
         .then((response) => response.json())
         .then((json) => {
-          setOriginalData(json);
-          setPosts(json);
+          const newPosts = [
+            ...json.map((post: any) => {
+              return {
+                id: post.id,
+                body: post.body,
+                title: post.title,
+                userId: post.userId,
+                favorite: false,
+                /* tags: [...post.tags.map((tag: any) => tag.titulo)], */
+              };
+            }),
+          ];
+          setOriginalData(newPosts);
+          setPosts(newPosts);
         });
     };
     fetchPosts();
-    setFavoritePost([]);
   }, []);
 
   function renderPost(item: any) {
@@ -66,14 +80,8 @@ function Feed(): JSX.Element {
         });
     };
 
-    const handleFavoritePost = (id: any) => {
-      const postArray = posts.filter((posts) => {
-        console.log("têi", posts.id);
-        return posts.id;
-      });
-      console.log(postArray);
-
-      console.log(`> Favorited! \n ID: ${item.id} \n Title: ${item.title}`);
+    const handleFavoritePost = (item: any) => {
+      item.favorite = true;
     };
 
     return (
@@ -88,6 +96,9 @@ function Feed(): JSX.Element {
             onFavorite={handleFavoritePost}
             item={item.id}
             postId={item.id}
+            post={posts}
+            favorite={item.favorite}
+            /*changeFunction={changeFavorite} */
           />
         </Wrapper>
       </PostCardContainer>
@@ -125,3 +136,15 @@ function Feed(): JSX.Element {
 }
 
 export { Feed };
+
+/* 
+katchau  Object {
+  "body": "quia et suscipit
+suscipit recusandae consequuntur expedita et cum
+reprehenderit molestiae ut ut quas totam
+nostrum rerum est autem sunt rem eveniet architecto",
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "userId": 1,
+}
+ */

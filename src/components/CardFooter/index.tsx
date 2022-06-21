@@ -6,7 +6,10 @@ interface ICardFooterProps {
   onDelete(item: number): void;
   onFavorite(item: number): void;
   postId?(item: number): void;
+  /* changeFunction(value: boolean, post: any): void; */
   item: number;
+  favorite: boolean;
+  post: any;
 }
 
 function CardFooter({
@@ -14,14 +17,24 @@ function CardFooter({
   onFavorite,
   postId,
   item,
+  favorite,
+  post,
 }: ICardFooterProps): JSX.Element {
   return (
     <Container>
       <Wrapper>
         <Text>ID: {postId}</Text>
         <IconContainer>
-          <Button onPress={() => onFavorite(item)}>
-            <FontAwesome name="star" size={24} color="#C17817" />
+          <Button
+            onPress={() => {
+              post.favorite = !post.favorite;
+            }}
+          >
+            <FontAwesome
+              name="star"
+              size={24}
+              color={favorite ? "#FFB800" : "#A76813"}
+            />
           </Button>
           <Button onPress={() => onDelete(item)}>
             <FontAwesome name="trash" size={24} color="#B20D30" />
