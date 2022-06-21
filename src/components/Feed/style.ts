@@ -37,6 +37,7 @@ export const Wrapper = styled.View`
   width: 100%;
   height: 200px;
   border-radius: 8px;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
 
   align-items: center;
 `;

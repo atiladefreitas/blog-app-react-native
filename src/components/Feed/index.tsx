@@ -29,6 +29,7 @@ export interface IBlogProps {
 function Feed(): JSX.Element {
   const [posts, setPosts] = useState<IBlogProps[]>([]);
   const [originalData, setOriginalData] = useState<any>([]);
+  const [favoritePost, setFavoritePost] = useState<any>([]);
   const [postToDelete, setPostToDelete] = useState(0);
 
   useEffect(() => {
@@ -41,10 +42,10 @@ function Feed(): JSX.Element {
         });
     };
     fetchPosts();
+    setFavoritePost([]);
   }, []);
 
   function renderPost(item: any) {
-    //
     const handleDeletePost = async (id: any) => {
       await fetch(`${apiURL}/posts/${id}`, {
         method: "DELETE",
@@ -63,10 +64,15 @@ function Feed(): JSX.Element {
         .catch((error) => {
           console.log(error.message);
         });
-      console.log(`> Deleted! \n ID: ${item.id} \n Title: ${item.title}`);
     };
 
-    const handleFavoritePost = () => {
+    const handleFavoritePost = (id: any) => {
+      const postArray = posts.filter((posts) => {
+        console.log("têi", posts.id);
+        return posts.id;
+      });
+      console.log(postArray);
+
       console.log(`> Favorited! \n ID: ${item.id} \n Title: ${item.title}`);
     };
 
@@ -97,7 +103,7 @@ function Feed(): JSX.Element {
     <Container>
       <InputContainer>
         <Input
-          placeholder={`pesquise aqui ...`}
+          placeholder={`Pesquise aqui ...`}
           onChangeText={(s) => Search(s)}
           autoCapitalize="none"
         />

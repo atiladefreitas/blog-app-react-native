@@ -1,7 +1,5 @@
 import { Container, Text, IconContainer, Button, Wrapper } from "./style";
-import { FaTrash } from "react-icons/fa";
 import { FontAwesome } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
 
 interface ICardFooterProps {
