@@ -164,13 +164,13 @@ const handleDeletePost = async (id: any) => {
 </br>
 <p align="center">
 <a href="https://www.linkedin.com/in/atilafreitas/"><img src="./src/assets/Linkedin.png"height="50em"/></a>
-    &nbsp;&nbsp;&nbsp;
+    &nbsp;
     <a href="https://instagram.com/atiladefreitas.co/"><img src="./src/assets/isntagram.png"height="50em"/></a>
-    &nbsp;&nbsp;&nbsp;
+    &nbsp;
     <a href="https://t.me/atilajcfreitas"><img src="./src/assets/Telegram.png"height="50em"/></a>
-    &nbsp;&nbsp;&nbsp;
+    &nbsp;
     <a href="mailto:contact@atiladefreitas.co"><img src="./src/assets/E-mail.png" height="50em"/></a>
-    &nbsp;&nbsp;&nbsp;
+    &nbsp;
     <a href="https://github.com/atiladefreitas"><img src="./src/assets/Github.png"height="50em"/></a>
 </p>
 </div>
