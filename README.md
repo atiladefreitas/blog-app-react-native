@@ -163,14 +163,14 @@ const handleDeletePost = async (id: any) => {
 </br>
 </br>
 <p align="center">
-<a href="https://www.linkedin.com/in/atilafreitas/"><img src="./src/assets/Linkedin.png"height="50em"/></a>
+<a href="https://www.linkedin.com/in/atilafreitas/"><img src="./src/assets/Linkedin.png"height="45em"/></a>
     &nbsp;
-    <a href="https://instagram.com/atiladefreitas.co/"><img src="./src/assets/isntagram.png"height="50em"/></a>
+    <a href="https://instagram.com/atiladefreitas.co/"><img src="./src/assets/isntagram.png"height="45em"/></a>
     &nbsp;
-    <a href="https://t.me/atilajcfreitas"><img src="./src/assets/Telegram.png"height="50em"/></a>
+    <a href="https://t.me/atilajcfreitas"><img src="./src/assets/Telegram.png"height="45em"/></a>
     &nbsp;
-    <a href="mailto:contact@atiladefreitas.co"><img src="./src/assets/E-mail.png" height="50em"/></a>
+    <a href="mailto:contact@atiladefreitas.co"><img src="./src/assets/E-mail.png" height="45em"/></a>
     &nbsp;
-    <a href="https://github.com/atiladefreitas"><img src="./src/assets/Github.png"height="50em"/></a>
+    <a href="https://github.com/atiladefreitas"><img src="./src/assets/Github.png"height="45em"/></a>
 </p>
 </div>
