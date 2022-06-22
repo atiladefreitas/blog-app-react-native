@@ -29,6 +29,7 @@ export interface IBlogProps {
 function Feed(): JSX.Element {
   const [posts, setPosts] = useState<IBlogProps[]>([]);
   const [originalData, setOriginalData] = useState<any>([]);
+  const [favoritePost, setFavoritePost] = useState([]);
   const [postToDelete, setPostToDelete] = useState(0);
 
   const changeFavorite = (value: boolean, item: any) => {
@@ -98,6 +99,8 @@ function Feed(): JSX.Element {
             postId={item.id}
             post={posts}
             favorite={item.favorite}
+            favoriteState={favoritePost}
+            setFavoriteState={setFavoritePost}
             /*changeFunction={changeFavorite} */
           />
         </Wrapper>
