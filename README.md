@@ -30,11 +30,7 @@
       </ul>
     </li>
     <li><a href="#usage-&-Function-walkthrough">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -82,9 +78,11 @@ For run the application you need the following tools:
 ### Installation
 
 1. Clone the repo
-   ```sh
-   git clone https://github.com/atiladefreitas/blog-rn.git
-   ```
+
+```sh
+git clone https://github.com/atiladefreitas/blog-rn.git
+```
+
 2. Install NPM packages
    ```sh
    npm install
@@ -153,13 +151,6 @@ const handleDeletePost = async (id: any) => {
       console.log(error.message);
     });
 };
-```
-
-- Favorite Post
-  _asdasdasd_
-
-```Javascript
-
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>

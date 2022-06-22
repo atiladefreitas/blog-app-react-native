@@ -1,28 +1,31 @@
 import { Container, Text, IconContainer, Button, Wrapper } from "./style";
 import { FontAwesome } from "@expo/vector-icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface ICardFooterProps {
   onDelete(item: number): void;
   onFavorite(item: number): void;
   postId?(item: number): void;
-  setFavoriteState: any;
-  favoriteState: any;
   item: number;
-  favorite: boolean;
-  post: any;
+  posts: any[];
 }
 
 function CardFooter({
   onDelete,
-  onFavorite,
   postId,
   item,
-  favorite,
-  favoriteState,
-  setFavoriteState,
-  post,
+  posts,
 }: ICardFooterProps): JSX.Element {
+  const [starColorState, setStarColorState] = useState("#FFB800");
+
+  useEffect(() => {
+    if (starColorState == "#FFB800") {
+      setStarColorState("#A76813");
+    } else {
+      setStarColorState("#FFB800");
+    }
+  }, [posts]);
+
   return (
     <Container>
       <Wrapper>
@@ -30,14 +33,14 @@ function CardFooter({
         <IconContainer>
           <Button
             onPress={() => {
-              setFavoriteState({ ...favoriteState, item });
+              if (starColorState == "#FFB800") {
+                setStarColorState("#A76813");
+              } else {
+                setStarColorState("#FFB800");
+              }
             }}
           >
-            <FontAwesome
-              name="star"
-              size={24}
-              color={favorite ? "#FFB800" : "#A76813"}
-            />
+            <FontAwesome name="star" size={24} color={starColorState} />
           </Button>
           <Button onPress={() => onDelete(item)}>
             <FontAwesome name="trash" size={24} color="#B20D30" />

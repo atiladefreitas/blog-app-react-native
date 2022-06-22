@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -29,12 +28,6 @@ export interface IBlogProps {
 function Feed(): JSX.Element {
   const [posts, setPosts] = useState<IBlogProps[]>([]);
   const [originalData, setOriginalData] = useState<any>([]);
-  const [favoritePost, setFavoritePost] = useState([]);
-  const [postToDelete, setPostToDelete] = useState(0);
-
-  const changeFavorite = (value: boolean, item: any) => {
-    item.favorite = value;
-  };
 
   useEffect(() => {
     const fetchPosts = () => {
@@ -49,7 +42,6 @@ function Feed(): JSX.Element {
                 title: post.title,
                 userId: post.userId,
                 favorite: false,
-                /* tags: [...post.tags.map((tag: any) => tag.titulo)], */
               };
             }),
           ];
@@ -97,11 +89,7 @@ function Feed(): JSX.Element {
             onFavorite={handleFavoritePost}
             item={item.id}
             postId={item.id}
-            post={posts}
-            favorite={item.favorite}
-            favoriteState={favoritePost}
-            setFavoriteState={setFavoritePost}
-            /*changeFunction={changeFavorite} */
+            posts={posts}
           />
         </Wrapper>
       </PostCardContainer>
@@ -139,15 +127,3 @@ function Feed(): JSX.Element {
 }
 
 export { Feed };
-
-/* 
-katchau  Object {
-  "body": "quia et suscipit
-suscipit recusandae consequuntur expedita et cum
-reprehenderit molestiae ut ut quas totam
-nostrum rerum est autem sunt rem eveniet architecto",
-  "id": 1,
-  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-  "userId": 1,
-}
- */
